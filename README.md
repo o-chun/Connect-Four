@@ -3,6 +3,7 @@ EECE2140: Final Project - Connect Four
 
 Project Proposal
 1. Who is on your team?
+
 Just me (Owen Chun). :)
 
 2. An overview of the project similar in scope and length to the example projects listed below.
@@ -13,8 +14,10 @@ Just me (Owen Chun). :)
 
 4. What libraries and tools will you need to learn to use?
 
+Math, random
 
 5. Identify the highest-priority features, the medium-priority features, and the lowest-priority features for your project.
+
 High-priority:
   - Working connect four game
     - Board updates correctly after each turn
