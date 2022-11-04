@@ -26,10 +26,12 @@ High-priority:
       - Win when someone gets at least 4 in a row
       - Draw when board is full with no winner
   - Working bot the user can play against (that doesn't just place randomly)
+
 Medium-priority:
   - Different difficulty setting for the bot
   - Allows two users to play against each other
    - Change number of rounds for each game (Win best of 3, 5, etc. instead of just 1 round)
+
 Low-priority:
   - Customizable game (user can change symbols representing the pieces)
   - Fun win message (or loss or draw message)
