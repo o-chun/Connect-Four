@@ -41,5 +41,5 @@ Medium-priority:
 Low-priority:
   - Customizable game (user can change symbols representing the pieces)
   - Fun win message (or loss or draw message)
-  - Bot makes comments throughtout the game
+  - Bot makes comments throughout the game
   - Display the game with pygame
