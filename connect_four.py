@@ -54,7 +54,6 @@ class Board:
             else:
                 in_a_row = 1
         # Check diagnols
-        
         # Check tie
         if self.status == 'ongoing' and not ' ' in self.data[0]:
             self.status = 'tie'
