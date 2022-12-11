@@ -13,6 +13,7 @@ class Board:
         else:
             self.turn_symbol = self.p2_symbol
         self.status = 'ongoing'
+        self.draw_board()
 
     def draw_board(self):
         '''Draws board to terminal'''
@@ -28,13 +29,15 @@ class Board:
         row_num = self.find_open_row(col_num) + 1
         # Check horizontal
         if self.data[row_num][3] == self.turn_symbol:
+            # right
             for i in range(4, 7, 1):
-                if self.data[row_num][3] == self.data[row_num][i]:
+                if self.data[row_num][i] == self.turn_symbol:
                     in_a_row += 1
                 else:
                     break
+            # left
             for j in range(2, -1, -1):
-                if self.data[row_num][3] == self.data[row_num][j]:
+                if self.data[row_num][j] == self.turn_symbol:
                     in_a_row += 1
                 else:
                     break
@@ -45,7 +48,7 @@ class Board:
         # Check vertical
         if self.find_open_row(col_num) < 2 and self.status == 'ongoing':
             for x in range(row_num+1, 6, 1):
-                if self.data[row_num][col_num] == self.data[x][col_num]:
+                if self.data[x][col_num] == self.turn_symbol:
                     in_a_row += 1
                 else:
                     break
@@ -53,7 +56,59 @@ class Board:
                 self.status = 'win'
             else:
                 in_a_row = 1
-        # Check diagnols
+        # Check diagonals
+        # \
+        if self.status == 'ongoing':
+            # up left
+            up = row_num - 1
+            left = col_num - 1
+            while up >= 0 and left >= 0:
+                if self.data[up][left] == self.turn_symbol:
+                    in_a_row += 1
+                    up -= 1
+                    left -= 1
+                else:
+                    break
+            # down right
+            down = row_num + 1
+            right = col_num + 1
+            while down <= 5 and right <= 6:
+                if self.data[down][right] == self.turn_symbol:
+                    in_a_row += 1
+                    down += 1
+                    right += 1
+                else:
+                    break
+            if in_a_row >= 4:
+                self.status = 'win'
+            else:
+                in_a_row = 1
+        # /
+        if self.status == 'ongoing':
+            # up right
+            up = row_num - 1
+            right = col_num + 1
+            while up >= 0 and right <= 6:
+                if self.data[up][right] == self.turn_symbol:
+                    in_a_row += 1
+                    up -= 1
+                    right += 1
+                else:
+                    break
+            # down left
+            down = row_num + 1
+            left = col_num - 1
+            while down <= 5 and left >= 0:
+                if self.data[down][left] == self.turn_symbol:
+                    in_a_row += 1
+                    down += 1
+                    left -= 1
+                else:
+                    break
+            if in_a_row >= 4:
+                self.status = 'win'
+            else:
+                in_a_row = 1
         # Check tie
         if self.status == 'ongoing' and not ' ' in self.data[0]:
             self.status = 'tie'
@@ -80,9 +135,25 @@ class Board:
         - draw_board()
         - check_status()
         '''
-        pass
+        p_num = 0
+        if self.turn_symbol == self.p1_symbol:
+            p_num = 1
+        else:
+            p_num = 2
+        print("Player", p_num)
+        while True:
+            move = int(input("Enter your next move: (# 0-6)\n"))
+            if move < 0 or move > 6:
+                print("Invalid column number.")
+            elif self.is_column_open(move):
+                self.insert_piece(move)
+                break
+            else:
+                print("Column full. Enter a different move.")
+        self.draw_board()
+        self.check_status()
 
-    def change_settings(self):
+    def set_settings(self):
         '''Asks player for game settings
         - Face another player or bot
         - Bot difficulty
@@ -91,9 +162,25 @@ class Board:
         '''
         pass
 
-class Bot:
-    def __init__(self):
+
+
+class Player:
+    def __init__(self) -> None:
         pass
+
+    def make_move(self):
+        pass
+
+class Human(Player):
+    def __init__(self):
+        super().__init__()
+
+    def make_move(self):
+        pass
+
+class Bot(Player):
+    def __init__(self):
+        super().__init__()
 
     def make_move(self):
         '''Makes a move depending on bot's difficulty'''
