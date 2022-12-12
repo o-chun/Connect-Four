@@ -70,6 +70,15 @@ class Normal(Bot):
     def make_move(self, my_board):
         moves = [0, 1, 2, 3, 4, 5, 6]
 
+class Hard(Bot):
+    def __init__(self, nam = 'Hard Bot', sym = 'O'):
+        super().__init__(nam, sym)
+
+    def print_info(self):
+        super().print_info('Hard')
+
+    def make_move(self, my_board):
+        moves = [0, 1, 2, 3, 4, 5, 6]
 
 # ----- Game Board Class -----
 class Board:
