@@ -225,13 +225,16 @@ class Board:
                     c_p = self.player1
                 else:
                     c_p = self.player2'''
-                human_or_bot = input("Pick a mode (1/2):\n1. User vs User\n2. User vs Bot\n")
+                human_or_bot = input("Pick a mode (1/2/3):\n1. User vs User\n2. User vs Bot\n3. Bot vs Bot\n")
                 if human_or_bot == '1':
+                    self.player1 = Human()
                     self.player2 = Human('Player 2', 'O')
                 elif human_or_bot == '2':
-                    self.player2 = Easy()
+                    self.player1 = Human()
+                    self.player2 = Easy('Bot', 'O')
                 else:
-                    self.player2 = Easy()
+                    self.player1 = Easy('Bot 1', 'X')
+                    self.player2 = Easy('Bot 2', 'O')
             
     def run_game(self):
         '''Run a full game'''
