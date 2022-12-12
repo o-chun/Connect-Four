@@ -4,9 +4,11 @@ EECE2140: Final Project - Connect Four
 
 # Final Project Report
 Summary
+
 This program runs a game of connect four in python using object-oriented programming. Connect four is a two-player game played on a 7 by 6 grid. Each player takes turns dropping a piece into a column with the goal of getting at least four of their own pieces in a row either horizontally, vertically, or diagonally. If the board is filled with no winner, the game ends in a tie. The game is played completely in the terminal. The user inputs their move to the terminal and the updated board is printed each turn. Besides the connect four game itself, the main feature of this program is the bot. The game can be a human user versus another user, a user versus a bot, or even a bot versus another bot. The bot was originally intended to have different difficulty settings, however this feature is still under construction. Since this program is a game, its expected application is to be played to have fun. :)
 
 Overview of the Code
+
 This program includes 6 classes. The first class is the 'Player' class. This is just a base class used for the next 4 classes. It contains attributes for the player's name and the 1 character symbol used to represent the player's pieces. It also contains a method 'print_info' to print this information.
 Next is the 'Human' class which inherits the 'Player' class. This has the same initialization method as the 'Player' class, but the 'print_info' method additionaly print the player's type as 'User' to distinguish it from a bot. This class also has a 'make_move' method which prompts the user for their move and inserts their piece into the board, throwing an error if the column is full or the input was invalid.
 Next is the 'Bot' class which also inherits the 'Player' class. Similar the 'Human' class, this class also uses the 'Player' class' initialization method and the 'print_info' method prints its type as 'Bot', but the print method for this class also prints the bot's difficulty. There are also some other attributes and methods that are unfinished, but will be used to complete the bot's harder difficulties.
@@ -15,9 +17,11 @@ The last class is the 'Board' class. This does not inherit any of the other clas
 The first method of the 'Board' class is the 'draw_board' method which prints the board to the terminal using the board's 'data'. The next method is 'check_status' which checks for a win or a tie after a piece is played and updates the 'status' accordingly. 'is_column_open' checks if the supplied column is open and returns false if it is full. 'find_open_row' finds the lowest open row in the supplied column. 'insert_piece' takes in a column number and inserts the current player's piece into that column at the lowest empty row using 'find_open_row'. 'run_turn' runs one turn of the game. It prints the turn number and the player's name, takes a move from the player, prints the updated board, and then checks the status. 'set_settings' prints the current game settings and asks the user if they want to change them. The user can then change the settings if wanted. 'run_game' runs a full game of connect four and ends when the status is 'win' or 'tie'.
 
 Instructions
+
 A game automatically starts when the program is run. Follow the directions printed to the terminal. First set the game settings. Then input moves as a single number 0 to 6 each turn and play the game. No additional code is needed to run the program.
 
 Suggestions
+
 Finish the difficulies for the bot. Finish the customization for the player settings. Run the game using pygame to make it look prettier and make it feel more like a game.
 
 
